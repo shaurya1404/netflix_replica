@@ -1,0 +1,21 @@
+.row {
+    color: white;
+    padding: 15px;
+}
+
+.row_posters {
+    display: flex;
+    overflow-y: hidden; /*sets the desired behavior when content does not fit in the parent element box (overflows) in the horizontal and/or vertical direction */
+    overflow-x: scroll;
+}
+
+.row_posters::-webkit-scrollbar {
+    display: none;
+}
+
+.row_poster {
+    max-height: 120px;
+    object-fit: contain;
+    margin-right: 10px;
+    margin-top: 10px;
+}

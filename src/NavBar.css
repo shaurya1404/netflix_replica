@@ -1,0 +1,40 @@
+.navbar_container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 30px;
+    width: 100%;
+    padding: 20px;
+    z-index: 1;
+
+    /*Animations*/
+    /*transitions allows you to change property values smoothly, over a given duration*/
+    transition-timing-function: ease-in; /*specifies the speed curve of a transition effect*/
+    transition: all 0.5s; /* add transition effect too all properties for 5s duration */
+}
+
+.nav_black {
+    background-color: black;
+}
+
+.navbar_logo {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 80px;
+    cursor: pointer;
+}
+
+.navbar_avatar {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
