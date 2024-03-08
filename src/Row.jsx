@@ -21,7 +21,7 @@ export default function Row({title, fetchUrl, isLarge = false}) {
         <div className="row">
             <h2>{title}</h2>
             <div className="row_posters">
-                {movies?.map((movie) => (
+                {movies?.map((movie) => ((isLarge && movie.poster_path) || (!isLarge && movie.backdrop_path)) && (
                     <img src={`${base_url}${ isLarge ? movie.poster_path : movie.backdrop_path}`} className={`row_poster ${isLarge && "row_posterLarge"}`} alt={`${movie.name}`} key={movie.id}></img>
                 ))}
             </div>
