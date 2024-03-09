@@ -48,6 +48,8 @@
     z-index: 1;
     color: white;
     padding: 20px;
+    left: 0; /* left and right set to 0 for margin-left and margin-right auto to give equal margins or left and right side of page */
+    right: 0;
 }
 
 .loginScreen_body > h1 {
