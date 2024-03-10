@@ -1,7 +1,8 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import "./SignUpScreen.css"
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.0.2/firebase-auth.js';
+import { useNavigate } from "react-router-dom";
 
 const firebaseConfig = {
     apiKey: "AIzaSyAfuqXZG7CbhUvRxknZyFUTYMNbAk6E4g0",
@@ -15,19 +16,20 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
+let user = auth.currentUser;
 
 export default function SignUpScreen() {
 
-    const register = (event) => {
+    const register = ((event) => {
         event.preventDefault(); // to prevent page from refershing when a button is clicked
         createUserWithEmailAndPassword(
             auth,
             emailRef.current.value,
             passwordRef.current.value
         )
-        .then((createdUser) => { console.log(createdUser)})
+        .then(userCredential => console.log(userCredential.user))
         .catch(error => alert(error.message))
-    };
+    });
 
     const signIn = (event) => {
         event.preventDefault();
@@ -36,7 +38,7 @@ export default function SignUpScreen() {
             emailRef.current.value,
             passwordRef.current.value
         )
-        .then(signedInUser => console.log(signedInUser))
+        .then(userCredential => console.log(userCredential.user))
         .catch(error => alert(error.message))
     };
 
