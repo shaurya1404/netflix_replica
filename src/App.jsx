@@ -13,35 +13,27 @@ const auth = getAuth();
 
 function App() {
 
-  const user = true
+  const user = useSelector((state) => state.users)
   console.log(user)
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if(user) {
-      dispatch(
-        login({
-          uid: user.uid,
-          email: user.email
-        })
-      )
-    }
-    else {dispatch(logout())}
-    // const toUnmount = auth.onAuthStateChanged(userAuth => {
-    //   console.log(userAuth);
-    //   if(userAuth) {
-    //     //Logged In
-    //     console.log(userAuth);
-    //     dispatch(
-    //       login({
-    //         uid: userAuth.uid,
-    //         email: userAuth.email
-    //       })
-    //     )
-    //   }
-    // });
-    // return toUnmount; // cleaning up by using "return" keyword in use Effect to remove the listener onAuthStateChanged 
-  }, [])
+    const toUnmount = auth.onAuthStateChanged(userAuth => {
+      console.log(userAuth);
+      if(userAuth) {
+        //Logged In
+        console.log(userAuth);
+        dispatch(
+          login({
+            uid: userAuth.uid,
+            email: userAuth.email
+          })
+        )
+      }
+      else {dispatch(logout())}
+    });
+    return toUnmount; // cleaning up by using "return" keyword in use Effect to remove the listener onAuthStateChanged 
+  }, [dispatch])
 
   return (
     <>
