@@ -14,10 +14,13 @@ export default function ProfileScreen() {
         <div className="profileScreen">
             <Navbar></Navbar>
             <div className="profileScreen_body">
-                <h1>Edit Profile!</h1>
+                <h1>Edit Profile</h1>
                 <div className="profileScreen_info">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"></img>
                     <div className="profileScreen_details">
+                        <div className="profileScreen_plans">
+                            <h3>Plans</h3>
+                        </div>
                         <h2>{user.email}</h2>
                         <div className="profileScreen_plans">
                             <button onClick={() => auth.signOut()} className="profileScreen_signOut">Sign Out</button>
